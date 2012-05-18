@@ -1,0 +1,28 @@
+.. ERPthon documentation master file, created by
+   sphinx-quickstart on Sat Mar 17 17:47:19 2012.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+ERPthon the werp framework
+==========================
+
+Developed to semplify the planning, collection, testing and analysis of
+enterprise datas, erpthon was designed to solve two important gaps:
+handle the quantity of informations (...) app and the increased
+amount of requirements of the developers who write it.
+
+Different approaches:
+---------------------
+
+.. toctree::
+   :maxdepth: 2
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
