@@ -15,16 +15,57 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>."""
 
 
-colors = {'black': '0', 'red': '1', 'green': '3', 'yellow': '4',
-              'blue': '5', 'purple': '6', 'cyan': '7', 'white': '8'}
-fg = '3'
-bg = '4'
+foreground = {'black': '30', 'red': '31', 'green': '32', 'yellow': '33',
+              'blue': '34', 'purple': '35', 'cyan': '36', 'white': '37'}
+background = {'black': '40', 'red': '41', 'green': '42', 'yellow': '43',
+              'blue': '44', 'purple': '45', 'cyan': '46', 'white': '47'}
 
-options = {'none': '0', 'bold': '1', 'underline': '4'}
+options = {'none': '0', 'bold': '1', 'underscore': '4', 'blink': '5',
+           'reverse': '7'}
 
-text_reset = '0'
+TEXT_RESET = '0'
 
 
-def colorize(text, fg='', bg='', opt='none'):
+def colorize(text, fg='', bg='', opt='none', reset=True):
+    """
+    Colorize text in shell.
 
-    RESET = '\x1b[%sm' % text_reset
+    reset style and color text if no arguments are given.
+
+    Args:
+    :param text: (str) the text you want to custom
+    :param fg: (str) foreground color (default is '')
+    :param bg: (str) backgorund color (default is '')
+    :param opt: (str) decorate text options (default is 'none')
+    :param reset: (bool) set to false if you want to set the style permanent,
+                   (default is True).
+
+    USAGE:
+    colorize('blue bold text', fg='blue', opt='bold')
+    colorize('backgournd green colored text', bg='green')
+    colorize() or colorize(opt='reset') #reset style text
+
+    AVAILABLE COLORS:
+    black, red, green, yellow, blue, purple, cyan, white
+
+    AVAILABLE OPTIONS:
+    reset, none, bold, uderscore, blink, reverse
+    """
+    reset = '\x1b[%sm' % TEXT_RESET
+    style_list = []
+
+    if opt == 'reset' or text == "":
+        return reset
+    if opt:
+        for k, v in options.iteritems():
+            if k == opt:
+                style_list.append(options[v])
+    if fg:
+        style_list.append(foreground[fg])
+    if bg:
+        style_list.append(background[bg])
+    if reset:
+        text = text + reset
+
+    text = ('\x1b[%sm' % ';'.join(style_list)) + text
+    return text
