@@ -1,4 +1,4 @@
-"""    <one line to give the program's name and a brief idea of what it does.>
+""" ERPthon. The werp framework written in python.
     Copyright (C) 2012  Cresto Miseroglio Alessandro <alex179ohm@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
@@ -33,23 +33,29 @@ def colorize(text, fg='', bg='', opt='none', reset=True):
     reset style and color text if no arguments are given.
 
     Args:
-    :param text: (str) the text you want to custom
-    :param fg: (str) foreground color (default is '')
-    :param bg: (str) backgorund color (default is '')
-    :param opt: (str) decorate text options (default is 'none')
-    :param reset: (bool) set to false if you want to set the style permanent,
+    -----
+    :param string text: the text you want to custom
+    :param string fg: foreground color (default is '')
+    :param string bg: backgorund color (default is '')
+    :param string opt: decorate text options (default is 'none')
+    :param bool reset: set to false if you want to set the style permanent,
                    (default is True).
 
     USAGE:
+    ------
     colorize('blue bold text', fg='blue', opt='bold')
     colorize('backgournd green colored text', bg='green')
     colorize() or colorize(opt='reset') #reset style text
 
     AVAILABLE COLORS:
+    -----------------
     black, red, green, yellow, blue, purple, cyan, white
 
     AVAILABLE OPTIONS:
+    ------------------
     reset, none, bold, uderscore, blink, reverse
+
+    :returns: ASCII text with code for customize it in unix shell.
     """
     reset = '\x1b[%sm' % TEXT_RESET
     style_list = []
@@ -69,3 +75,16 @@ def colorize(text, fg='', bg='', opt='none', reset=True):
 
     text = ('\x1b[%sm' % ';'.join(style_list)) + text
     return text
+
+_fg = ''
+_bg = ''
+
+
+def make_style(text, fg, bg, opt):
+    """
+    """
+    global _fg
+    global _bg
+    _fg = fg
+    _bg = bg
+    return lambda text: colorize(text, fg, bg, opt)
