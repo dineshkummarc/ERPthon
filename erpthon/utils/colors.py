@@ -55,6 +55,7 @@ def colorize(text, fg='', bg='', opt='none', reset=True):
     ------------------
     reset, none, bold, uderscore, blink, reverse
 
+    :rtype: ASCII string
     :returns: ASCII text with code for customize it in unix shell.
     """
     reset = '\x1b[%sm' % TEXT_RESET
@@ -82,6 +83,18 @@ _bg = ''
 
 def make_style(text, fg, bg, opt):
     """
+    Make custom style for text.
+
+    USAGE:
+    bold_red = make_style(fg='red', opt=bold)
+    bold_red("i want bold red text")
+
+    PARAMS:
+    :param string fg: foreground color
+    :param string bg: backgorund color
+    :param string opt: options like 'none', 'bold' ...
+
+    for available colors and options read :py:func: `colorize`
     """
     global _fg
     global _bg
