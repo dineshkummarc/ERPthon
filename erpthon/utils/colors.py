@@ -101,3 +101,12 @@ def make_style(text, fg, bg, opt):
     _fg = fg
     _bg = bg
     return lambda text: colorize(text, fg, bg, opt)
+
+
+def setting_color_term(palette='default'):
+    from erpthon.global_settings import TERM_COLOR_PALETTE
+
+    palettes = dict([(k, v) for k, v in TERM_COLOR_PALETTE.iteritems()])
+
+    if palette in palettes.keys():
+        

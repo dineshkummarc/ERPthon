@@ -34,4 +34,3 @@ def get_version(version=None):
 
     part2 = dict_version[VERSION[3]] + str(VERSION[4])
     return part1 + part2
-

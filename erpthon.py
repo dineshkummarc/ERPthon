@@ -7,13 +7,6 @@ import sys
 
 class Main(object):
 
-    def validate_command(self, command):
-        comm_list = get_commands_list()
-        if command in comm_list:
-            return True
-        else:
-            return False
-
     def execute(self, command, param=None):
 
         if self.validate_command(command):

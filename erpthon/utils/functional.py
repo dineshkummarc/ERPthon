@@ -15,6 +15,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>."""
 
 import os
+import sys
 from erpthon.bin.commands import get_commands_path
 
 
@@ -29,3 +30,7 @@ def get_commands_list():
     _list = os.listdir(get_commands_path())
     return [i.split('.')[0] for i in _list if not i.startswith('_') and
             i.endswith('.pyc')]
+
+
+def import_setting():
+    pass

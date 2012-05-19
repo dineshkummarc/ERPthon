@@ -36,6 +36,8 @@ TIME_ZONE = 'Europe/Rome'
 LANGUAGE = 'IT-it'
 
 TERM_COLOR_PALETTE = {
-                      'NO_COLOR': {},
-                      'DEFAULT': {}
+                      'no_color': {'PROGRAM': (),
+                                   'COMMAND': ()},
+                      'default': {'PROGRAM': ('bold', 'blue'),
+                                  'COMMAND': ('bold', 'blue')}
                       }
